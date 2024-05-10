@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from "react-router-dom";
+import Headers from './component/Header'
+import Footer from "./component/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
+import SummeryApi from "./common";
+import Context from "./context";
 
 function App() {
+
+
+  const featchUserDetails = async () => {
+    const dataResponse = await fetch(SummeryApi.current_user.url, {
+      method: SummeryApi.current_user.method,
+      credentials: 'include'
+    })
+    const dataAPI = await dataResponse.json();
+    console.log("dataUser", dataAPI)
+  }
+  useEffect(() => {
+    // useeDetails 
+    featchUserDetails();
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Context.Provider value={{
+        featchUserDetails //user details fatch 
+      }}>
+
+        <ToastContainer />
+        <Headers />
+        <main className="min-h-[calc(100vh-120px)]"><Outlet /></main>
+        <Footer />
+
+      </Context.Provider>
+
+    </>
+
   );
 }
 
