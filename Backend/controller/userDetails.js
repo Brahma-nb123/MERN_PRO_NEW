@@ -6,7 +6,8 @@ async function userDetaiulsController(req,res){
         message : "user detail",
         data : user,
         error : false,
-        success : true
+        success : true,
+        message : "user DEtails"
     })
     console.log("user",user);
     }

@@ -3,15 +3,15 @@ const jwt = require('jsonwebtoken');
 async function authToken(req, res, next) {
     try {
         const token = req.cookies?.token || req.header
-
-        if (!token) {
+console.log('user id',req.user.id)
+         if (!token) {
             return res.status(200).json({
                 message: "UserNotlogin",
                 error: true,
                 success: false
             })
         }
-
+  
         jwt.verify(token, 'TOKEN_SECRET_KEY', function (err, decoded) {
             console.log(err) // bar
             console.log("decoded", decoded);
@@ -19,13 +19,13 @@ async function authToken(req, res, next) {
             if (err) {
                 console.log("error auth", err)
             }
-            req.userId = decode?._id
+            req.user.Id = decoded?._id
             next()
         });
 
         console.log("token", token)
     }
-    catch (err) {
+    catch(err) {
         res.status(400).json({
             message: err.mressage || err,
             error: true,

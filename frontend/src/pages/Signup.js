@@ -35,6 +35,7 @@ const Signup = () => {
   const handleUpdatenew = async (e) => {
     const file = e.target.files[0];
     const imagePic = await imageTobase64(file);
+
     setData((preve)=>{
       return {
         ...preve,
@@ -94,7 +95,7 @@ const Signup = () => {
             <form>
               <label>
                 <div className='text-xs bg-slate-300 absolute bg-opacity-40 cursor-pointer top-8 py-4 right-1 rounded-md'>Upload Photo</div>
-                <input type='file' onChange={handleUpdatenew} />
+                <input type='file' onChange={handllleUpdatenew} />
               </label>
             </form>
 
