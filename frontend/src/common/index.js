@@ -1,5 +1,8 @@
+// import allusers from "../../../Backend/controller/allUsers";
 
 const backendDomin = "http://localhost:8080"
+
+const allUserList="https://microsoftedge.github.io/Demos/json-dummy-data/missing-colon.json"
 
 const SummeryApi ={
     signUp : {
@@ -13,10 +16,16 @@ const SummeryApi ={
     current_user : {
         url : `${backendDomin}/api/user-details`,
         method : 'get'
+    },
+    logout_ures : {
+        url : `${backendDomin}/api/userLogout`,
+        method : 'get'
+    },
+    allusers :{
+        url : `${backendDomin}/api/allUsers`,
+        method : 'get'
     }
 }
 
-export default SummeryApi;
+export default {SummeryApi,allUserList};
 
-
-// http://localhost:8080/api/signup

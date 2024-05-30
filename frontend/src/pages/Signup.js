@@ -32,7 +32,7 @@ const Signup = () => {
     });
   };
 
-  const handleUpdatenew = async (e) => {
+  const handllleUpdatenew = async (e) => {
     const file = e.target.files[0];
     const imagePic = await imageTobase64(file);
 

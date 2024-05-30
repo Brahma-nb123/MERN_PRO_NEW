@@ -5,7 +5,9 @@ import Login from '../pages/Login.js'
 import ForgotPasswordPages from '../pages/ForgotPasswordPages.js'
 import Signup from '../pages/Signup.js'
 import AdminPanel from '../pages/AdminPanel.js'
-
+import AllUsers from '../pages/AllUser.js'
+import Product from '../pages/Product.js'
+import Mail from '../pages/Mail.js'
 
 const router =createBrowserRouter(
     [
@@ -31,7 +33,21 @@ const router =createBrowserRouter(
                 },
                 {
                     path : 'admin-panel',
-                    element : <AdminPanel/>
+                    element : <AdminPanel/>,
+                    children : [
+                        {
+                            path : 'allUsers',
+                            element : <AllUsers/>
+                        },
+                        {
+                            path : 'products',
+                            element : <Product/>
+                        },
+                        {
+                            path : 'mail',
+                            element : <Mail/>
+                        }
+                    ]
                 }
             ]
         }

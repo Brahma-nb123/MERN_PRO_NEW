@@ -16,6 +16,7 @@ root.render(
 
 <Provider store={store}>
 <RouterProvider router={router} />
+{/* <RouterProvider router={newrouter} /> */}
 </Provider>
 );
 
