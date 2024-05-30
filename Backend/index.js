@@ -6,22 +6,20 @@ const connectDB = require('./config/db')
 const router = require('./routes')
 
 
-
-
 const app = express();
-app.use(cors(
-    {
-        origin : process.env.FRONTEND_URL,
-        credentials : true,
-    }
-));
+// app.use(cors(
+//     {
+//         origin : process.env.FRONTEND_URL,
+//         credentials : true,
+//     }
+// ));
 
-// app.use(cors({
-//     origin: 'http://192.168.56.1:3000', // Replace with your client's origin
-//     methods: ['GET', 'POST'], // Specify the allowed HTTP methods
-//     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers
-//     credentials: true // Allow sending cookies from the client
-//   }));
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with your client's origin
+    methods: ['GET', 'POST'], // Specify the allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers
+    credentials: true // Allow sending cookies from the client
+  }));
 
 app.use(express.json());
 app.use("cookieParser",cookieParser());

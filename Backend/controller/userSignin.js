@@ -23,35 +23,16 @@ async function userSignInController(req, res) {
         // Check if the password is correct
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
-        // if (!isPasswordValid) {
-        //     throw new Error("Incorrect password");
-        // }
-
-        if (isPasswordValid) {
-            const tokenData = {
-                _id: user._id,
-                email: user.email,
-
-            }
-            // Generate JWT token for authentication
-            const token = jwt.sign(
-                tokenData, process.env.TOKEN_SECRET_KEY, { expiresIn: 60 * 60 * 8 });
-
-            res.cookie("token",token,tokenData).json({
-                message: "login succesfully",
-                data: token,
-                success: true,
-                error: false
-            })
+        if (!isPasswordValid) {
+            throw new Error("Incorrect password");
         }
 
-        else {
-            throw new Error("Please check Password.");
+        // Generate JWT token for authentication
+        const tokenData = {
+            _id: user._id,
+            email: user.email,
         }
-
-
-
-
+        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, { expiresIn: 60 * 60 * 8 });
 
         // Set token in HTTP-only cookie for secure storage
         res.cookie("token", token, { httpOnly: true, secure: true });
@@ -63,6 +44,7 @@ async function userSignInController(req, res) {
             success: true,
             error: false
         });
+
     } catch (err) {
         // Handle errors
         console.error("Error in user sign-in:", err);

@@ -5,7 +5,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import SummeryApi from '../common';
 import { toast } from 'react-toastify';
-import Context from '../context/index'
+import Context from '../context'
 
 
 const Login = () => {
@@ -17,8 +17,9 @@ const Login = () => {
     })
     const navigae = useNavigate()
     // inpput section 
-    const generalContext = useContext(Context);
-console.log("generalContext",generalContext);
+    const {featchUserDetails}= useContext(Context);
+// console.log("generalContext",generalContext.featchUserDetails()
+// );
 
     const handaleOnchange = (e) => {
         const { name, value } = e.target
@@ -33,7 +34,7 @@ console.log("generalContext",generalContext);
 
     // form submition function
     const handalSubmit = async (e) => {
-        e.prevetDefault();
+        e.preventDefault();
 
         const dataResponse = await fetch(SummeryApi.signIn.url, {
             method: SummeryApi.signIn.method,
@@ -51,8 +52,9 @@ console.log("generalContext",generalContext);
 
         if (dataAPI.success) {
             toast.success(dataAPI.message)
-            console.log("Login successful")
+            console.log("Login successful#####################################")
             navigae('/')
+            featchUserDetails()
         }
         if (dataAPI.error) {
             toast.error(dataAPI.message)

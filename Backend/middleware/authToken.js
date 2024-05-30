@@ -1,37 +1,40 @@
-
 const jwt = require('jsonwebtoken');
+
 async function authToken(req, res, next) {
     try {
-        const token = req.cookies?.token || req.header
+        const token = req.cookies?.token;
+        console.log("token    -", token);
 
         if (!token) {
-            return res.status(200).json({
-                message: "UserNotlogin",
+            return res.status(401).json({
+                message: "User not logged in",
                 error: true,
                 success: false
-            })
+            });
         }
 
-        jwt.verify(token, 'TOKEN_SECRET_KEY', function (err, decoded) {
-            console.log(err) // bar
-            console.log("decoded", decoded);
-
+        jwt.verify(token, process.env.TOKEN_SECRET_KEY, function (err, decoded) {
             if (err) {
-                console.log("error auth", err)
+                console.log("error auth", err);
+                return res.status(401).json({
+                    message: "Invalid token",
+                    error: true,
+                    success: false
+                });
             }
-            req.userId = decode?._id
-            next()
+
+            console.log("decoded", decoded);
+            req.userId = decoded?.id; // Make sure the key is `id` as per your token payload
+
+            next();
         });
 
-        console.log("token", token)
-    }
-    catch (err) {
-        res.status(400).json({
-            message: err.mressage || err,
+    } catch (err) {
+        res.status(500).json({
+            message: err.message || err,
             error: true,
-            data: [],
             success: false
-        })
+        });
     }
 }
 
