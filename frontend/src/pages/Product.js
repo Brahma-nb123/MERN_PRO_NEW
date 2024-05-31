@@ -59,8 +59,8 @@ useEffect(()=>{
 
 
   return matchesFirstName && matchGender && matchesAge;
-  })
-},setFilteredData[filterText, filterAge, filterGender, userdata]);
+  });setFilteredData(filteredData);
+},[filterText, filterAge, filterGender, userdata]);
 
 
 
