@@ -8,6 +8,10 @@ import AdminPanel from '../pages/AdminPanel.js'
 import AllUsers from '../pages/AllUser.js'
 import Product from '../pages/Product.js'
 import Mail from '../pages/Mail.js'
+import MessageList from '../pages/MessageList.js'
+import ChatList from '../pages/ChatList.js'
+// import CallList from '../pages/CallList.js                                                                                                         '
+import CallList from '../pages//CallList.js'
 
 const router =createBrowserRouter(
     [
@@ -46,6 +50,18 @@ const router =createBrowserRouter(
                         {
                             path : 'mail',
                             element : <Mail/>
+                        },
+                        {
+                            path : 'messagelist',
+                            element : <MessageList/>
+                        },
+                        {
+                            path : 'calllist',
+                            element : <CallList/>
+                        },
+                        {
+                            path : 'chatlist',
+                            element : <ChatList/>
                         }
                     ]
                 }

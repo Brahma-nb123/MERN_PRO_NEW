@@ -49,10 +49,10 @@ const Signup = () => {
 
 
   //submit input data in API
+
   const handalSubmitnew = async(e) => {
     e.preventDefault();
-
-    
+   
     if(data.password === data.conformPassword){
       // console.log('SummeryApi.signUp.url',SummeryApi.signUp.url);
 
