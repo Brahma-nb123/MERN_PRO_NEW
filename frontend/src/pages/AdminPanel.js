@@ -28,6 +28,11 @@ const AdminPanel = () => {
                             <Link to={'allUsers'} className='px-2 py-1 hover:bg-slate-200'>All User</Link>
                             
                             <Link to={'products'} className='px-2 py-1 hover:bg-slate-200'>All Product</Link>
+                            <Link to={'calllist'} className='px-2 py-1 hover:bg-slate-200'>Call List</Link>
+                            <Link to={'messagelist'} className='px-2 py-1 hover:bg-slate-200'>Message List</Link>
+                            <Link to={'chatlist'} className='px-2 py-1 hover:bg-slate-200'>Chat List</Link>
+                            
+
                             {/* <Index/> */}
                         </nav>
                         

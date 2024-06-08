@@ -52,14 +52,14 @@ const Product = () => {
 
 
 useEffect(()=>{
-  const filter=userdata.filter(user=>{
+  const filtered=userdata.filter(user=>{
     const matchesFirstName = user.firstName.toLowerCase().includes(filterText.toLowerCase());
     const matchesAge =filterAge ? user.age === parseInt(filterAge) : true;
     const matchGender = filterGender ? user.gender.toLowerCase()===filterGender : true;
 
 
   return matchesFirstName && matchGender && matchesAge;
-  });setFilteredData(filteredData);
+  });setFilteredData(filtered);
 },[filterText, filterAge, filterGender, userdata]);
 
 
